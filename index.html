@@ -160,11 +160,6 @@
       font-size: 0.9rem;
     }
 
-    .hint {
-      font-size: 0.75rem;
-      color: #777;
-    }
-
     .btn-primary {
       width: 100%;
       margin-top: 14px;
@@ -177,11 +172,6 @@
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 10px 20px rgba(22,163,74,0.35);
-      transition: transform 0.08s ease, box-shadow 0.08s ease;
-    }
-    .btn-primary:active {
-      transform: translateY(1px);
-      box-shadow: 0 5px 12px rgba(22,163,74,0.3);
     }
 
     .footer {
@@ -190,362 +180,196 @@
       font-size: 0.75rem;
       color: #888;
     }
-
-    @media (max-width: 520px) {
-      .container {
-        padding: 14px 12px 18px;
-      }
-      .product-row {
-        grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.1fr);
-      }
-    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>Sambashiva Milk Agency</h1>
     <div class="subtitle">Add items and send your order on WhatsApp – Evening delivery 🚚</div>
 
-    <!-- Customer Info -->
-    <div class="field">
-      <label for="customerName">Name</label>
-      <input id="customerName" type="text" placeholder="Your full name" />
-    </div>
-    <div class="field">
-      <label for="customerAddress">Address / Village</label>
-      <textarea id="customerAddress" placeholder="House no, street, area, village"></textarea>
-    </div>
-    <div class="field">
-      <label for="deliveryTime">Preferred delivery time (evening)</label>
-      <input id="deliveryTime" type="text" placeholder="Example: 6:30 PM – 8:00 PM" />
-    </div>
+    <!-- CUSTOMER DETAILS -->
+    <div class="field"><label>Name</label><input id="customerName" type="text" /></div>
+    <div class="field"><label>Address / Village</label><textarea id="customerAddress"></textarea></div>
+    <div class="field"><label>Preferred delivery time</label><input id="deliveryTime" type="text" /></div>
 
-    <!-- Products -->
     <h2>Products</h2>
-    <div class="hint" style="margin-bottom:6px;">Tap + / – to change quantity.</div>
 
     <div class="products" id="productsContainer">
-      <!-- 1. Toned Milk 500ml -->
+
+      <!-- MILK (litres) -->
+
       <div class="product-row" data-id="TONED500">
-        <div>
-          <div class="product-name">Toned Milk 500ml</div>
-          <div class="product-unit">packet</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
+        <div><div class="product-name">Toned Milk 500ml</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
       </div>
 
-      <!-- 2. Standardized Milk 500ml -->
       <div class="product-row" data-id="STD500">
-        <div>
-          <div class="product-name">Standardized Milk 500ml</div>
-          <div class="product-unit">packet</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
+        <div><div class="product-name">Standardized Milk 500ml</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
       </div>
 
-      <!-- 3. Full cream Milk 500ml -->
       <div class="product-row" data-id="FULL500">
-        <div>
-          <div class="product-name">Full Cream Milk 500ml</div>
-          <div class="product-unit">packet</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
+        <div><div class="product-name">Full Cream Milk 500ml</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
       </div>
 
-      <!-- 4. Small Milk 110ml -->
       <div class="product-row" data-id="SMALL110">
-        <div>
-          <div class="product-name">Small Milk 110ml</div>
-          <div class="product-unit">packet</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
+        <div><div class="product-name">Small Milk 110ml</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
       </div>
 
-      <!-- 5. Small curd 110 (Arokya) -->
-      <div class="product-row" data-id="SCURD110_AROKYA">
-        <div>
-          <div class="product-name">Small Curd 110g (Arokya)</div>
-          <div class="product-unit">cup</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
-      </div>
-
-      <!-- 6. Small curd (Hatsun) -->
-      <div class="product-row" data-id="SCURD110_HATSUN">
-        <div>
-          <div class="product-name">Small Curd 110g (Hatsun)</div>
-          <div class="product-unit">cup</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
-      </div>
-
-      <!-- 7. Arokya Curd 400g -->
-      <div class="product-row" data-id="ACURD400">
-        <div>
-          <div class="product-name">Arokya Curd 400g</div>
-          <div class="product-unit">cup</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
-      </div>
-
-      <!-- 8. Hatsun Curd 500g -->
-      <div class="product-row" data-id="HCURD500">
-        <div>
-          <div class="product-name">Hatsun Curd 500g</div>
-          <div class="product-unit">cup</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
-      </div>
-
-      <!-- 9. Full Cream Milk 1000ml -->
       <div class="product-row" data-id="FULL1000">
-        <div>
-          <div class="product-name">Full Cream Milk 1000ml</div>
-          <div class="product-unit">packet</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
+        <div><div class="product-name">Full Cream Milk 1000ml</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
       </div>
 
-      <!-- 10. Standardized Milk 1000ml -->
       <div class="product-row" data-id="STD1000">
-        <div>
-          <div class="product-name">Standardized Milk 1000ml</div>
-          <div class="product-unit">packet</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
+        <div><div class="product-name">Standardized Milk 1000ml</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
       </div>
 
-      <!-- 11. Paneer -->
+      <!-- CURD (litres) -->
+
+      <div class="product-row" data-id="SCURD110_AROKYA">
+        <div><div class="product-name">Small Curd 110g (Arokya)</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
+      </div>
+
+      <div class="product-row" data-id="SCURD110_HATSUN">
+        <div><div class="product-name">Small Curd 110g (Hatsun)</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
+      </div>
+
+      <div class="product-row" data-id="ACURD400">
+        <div><div class="product-name">Arokya Curd 400g</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
+      </div>
+
+      <div class="product-row" data-id="HCURD500">
+        <div><div class="product-name">Hatsun Curd 500g</div><div class="product-unit">litre</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
+      </div>
+
+      <!-- PANEER (packets) -->
+
       <div class="product-row" data-id="PANEER">
-        <div>
-          <div class="product-name">Paneer</div>
-          <div class="product-unit">pack</div>
-        </div>
-        <div class="qty-controls">
-          <button type="button" class="btn-minus">–</button>
-          <input type="number" min="0" step="1" value="0" class="qty-input" />
-          <button type="button" class="btn-plus">+</button>
-        </div>
+        <div><div class="product-name">Paneer</div><div class="product-unit">packet</div></div>
+        <div class="qty-controls"><button>-</button><input type="number" value="0" /><button>+</button></div>
       </div>
+
     </div>
 
-    <!-- Cart Summary -->
+    <h2>Your Cart</h2>
+
     <div class="cart-summary">
-      <div class="cart-summary-title">Your Cart</div>
-      <div class="cart-items" id="cartItems">
-        <div class="hint">No items yet. Add from above.</div>
-      </div>
-      <div class="cart-total-line">
-        <span>Total items</span>
-        <span id="cartTotalItems">0</span>
-      </div>
+      <div class="cart-items" id="cartItems"><div>No items yet.</div></div>
+      <div class="cart-total-line"><span>Total items</span><span id="cartTotalItems">0</span></div>
     </div>
 
-    <!-- Extra Notes -->
-    <div class="field" style="margin-top:12px;">
-      <label for="extraNotes">Extra notes (optional)</label>
-      <textarea id="extraNotes" placeholder="Example: More thick curd, call me when you reach, etc."></textarea>
-    </div>
+    <div class="field"><label>Notes</label><textarea id="extraNotes"></textarea></div>
 
-    <!-- WhatsApp Button -->
-    <button class="btn-primary" id="sendOrderBtn">
-      Send Order on WhatsApp
-    </button>
-    <div class="hint" style="text-align:center;margin-top:4px;">
-      WhatsApp will open with order details. Please press “Send” there.
-    </div>
+    <button class="btn-primary" id="sendOrderBtn">Send Order on WhatsApp</button>
 
-    <div class="footer">
-      Sambashiva Milk Agency • Prop: K. Ajay Kumar Reddy • 7330892694
-    </div>
+    <div class="footer">Sambashiva Milk Agency • Prop: K. Ajay Kumar Reddy • 7330892694</div>
   </div>
 
-  <script>
-    // Your WhatsApp number (with country code, no + sign)
-    const WHATSAPP_NUMBER = "917330892694";
+<script>
+const WHATSAPP_NUMBER = "917330892694";
 
-    // Read all product rows and keep data in JS
-    const productRows = document.querySelectorAll(".product-row");
-    const products = []; // {id, name, unit, qty}
+const productRows = document.querySelectorAll(".product-row");
+const products = [];
 
-    productRows.forEach(function (row) {
-      const id = row.getAttribute("data-id");
-      const name = row.querySelector(".product-name").textContent.trim();
-      const unit = row.querySelector(".product-unit").textContent.trim();
-      const input = row.querySelector(".qty-input");
-      const minusBtn = row.querySelector(".btn-minus");
-      const plusBtn = row.querySelector(".btn-plus");
+productRows.forEach(row => {
+  const id = row.dataset.id;
+  const name = row.querySelector(".product-name").textContent.trim();
+  const unit = row.querySelector(".product-unit").textContent.trim();
+  const input = row.querySelector("input");
+  const minus = row.querySelectorAll("button")[0];
+  const plus = row.querySelectorAll("button")[1];
 
-      const product = { id, name, unit, qty: 0, input };
-      products.push(product);
+  const product = { id, name, unit, qty: 0, input };
+  products.push(product);
 
-      minusBtn.addEventListener("click", function () {
-        let val = parseInt(product.input.value || "0", 10);
-        if (isNaN(val)) val = 0;
-        val = Math.max(0, val - 1);
-        product.qty = val;
-        product.input.value = val;
-        updateCart();
-      });
-
-      plusBtn.addEventListener("click", function () {
-        let val = parseInt(product.input.value || "0", 10);
-        if (isNaN(val)) val = 0;
-        val = val + 1;
-        product.qty = val;
-        product.input.value = val;
-        updateCart();
-      });
-
-      input.addEventListener("change", function () {
-        let val = parseInt(product.input.value || "0", 10);
-        if (isNaN(val) || val < 0) val = 0;
-        product.qty = val;
-        product.input.value = val;
-        updateCart();
-      });
-    });
-
-    function updateCart() {
-      const cartItemsDiv = document.getElementById("cartItems");
-      cartItemsDiv.innerHTML = "";
-
-      let totalItems = 0;
-      let anyItem = false;
-
-      products.forEach(function (p) {
-        if (p.qty > 0) {
-          anyItem = true;
-          totalItems += p.qty;
-
-          const row = document.createElement("div");
-          row.className = "cart-item-row";
-
-          const nameSpan = document.createElement("span");
-          nameSpan.className = "cart-item-name";
-          nameSpan.textContent = p.name;
-
-          const qtySpan = document.createElement("span");
-          qtySpan.className = "cart-item-qty";
-          qtySpan.textContent = p.qty + " " + p.unit + (p.qty > 1 ? "s" : "");
-
-          row.appendChild(nameSpan);
-          row.appendChild(qtySpan);
-          cartItemsDiv.appendChild(row);
-        }
-      });
-
-      if (!anyItem) {
-        const empty = document.createElement("div");
-        empty.className = "hint";
-        empty.textContent = "No items yet. Add from above.";
-        cartItemsDiv.appendChild(empty);
-      }
-
-      document.getElementById("cartTotalItems").textContent = totalItems;
-    }
-
-    function buildWhatsAppMessage() {
-      const name = document.getElementById("customerName").value.trim();
-      const address = document.getElementById("customerAddress").value.trim();
-      const deliveryTime = document.getElementById("deliveryTime").value.trim();
-      const notes = document.getElementById("extraNotes").value.trim();
-
-      if (!name) {
-        alert("Please enter your name.");
-        return null;
-      }
-
-      let lines = [];
-      lines.push("*New Order – Sambashiva Milk Agency*");
-      lines.push("");
-      lines.push("*Name:* " + name);
-      if (address) lines.push("*Address:* " + address);
-      if (deliveryTime) lines.push("*Preferred time:* " + deliveryTime);
-      lines.push("");
-      lines.push("*Items:*");
-
-      let anyItem = false;
-      let totalItems = 0;
-
-      products.forEach(function (p) {
-        if (p.qty > 0) {
-          anyItem = true;
-          totalItems += p.qty;
-          lines.push("- " + p.name + " – " + p.qty + " " + p.unit + (p.qty > 1 ? "s" : ""));
-        }
-      });
-
-      if (!anyItem) {
-        alert("Please add at least one item.");
-        return null;
-      }
-
-      lines.push("");
-      lines.push("*Total items:* " + totalItems);
-
-      if (notes) {
-        lines.push("");
-        lines.push("*Notes:* " + notes);
-      }
-
-      lines.push("");
-      lines.push("_Sent from online order form_");
-
-      return lines.join("\n");
-    }
-
-    document.getElementById("sendOrderBtn").addEventListener("click", function () {
-      const msg = buildWhatsAppMessage();
-      if (!msg) return;
-
-      const encoded = encodeURIComponent(msg);
-      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encoded;
-      window.open(url, "_blank");
-    });
-
-    // Initial cart state
+  minus.onclick = () => {
+    product.qty = Math.max(0, product.qty - 1);
+    input.value = product.qty;
     updateCart();
-  </script>
+  };
+  plus.onclick = () => {
+    product.qty = product.qty + 1;
+    input.value = product.qty;
+    updateCart();
+  };
+  input.onchange = () => {
+    let v = parseInt(input.value);
+    if (isNaN(v) || v < 0) v = 0;
+    product.qty = v;
+    input.value = v;
+    updateCart();
+  };
+});
+
+function updateCart() {
+  const itemsDiv = document.getElementById("cartItems");
+  itemsDiv.innerHTML = "";
+  let totalItems = 0;
+
+  products.forEach(p => {
+    if (p.qty > 0) {
+      const row = document.createElement("div");
+      row.className = "cart-item-row";
+      row.innerHTML = `<span>${p.name}</span><span>${p.qty} ${p.unit}${p.qty > 1 ? "s" : ""}</span>`;
+      itemsDiv.appendChild(row);
+      totalItems += p.qty;
+    }
+  });
+
+  if (totalItems === 0) {
+    itemsDiv.innerHTML = "<div>No items yet.</div>";
+  }
+
+  document.getElementById("cartTotalItems").textContent = totalItems;
+}
+
+function buildWhatsAppMessage() {
+  const name = document.getElementById("customerName").value.trim();
+  if (!name) return alert("Enter name");
+
+  const addr = document.getElementById("customerAddress").value.trim();
+  const time = document.getElementById("deliveryTime").value.trim();
+  const notes = document.getElementById("extraNotes").value.trim();
+
+  let msg = `*New Order – Sambashiva Milk Agency*\n\n`;
+  msg += `*Name:* ${name}\n`;
+  if (addr) msg += `*Address:* ${addr}\n`;
+  if (time) msg += `*Time:* ${time}\n`;
+  msg += `\n*Items:*\n`;
+
+  let totalItems = 0;
+
+  products.forEach(p => {
+    if (p.qty > 0) {
+      msg += `• ${p.name} – ${p.qty} ${p.unit}${p.qty > 1 ? "s" : ""}\n`;
+      totalItems += p.qty;
+    }
+  });
+
+  if (totalItems === 0) return alert("Add at least one item");
+
+  msg += `\n*Total items:* ${totalItems}\n`;
+  if (notes) msg += `\n*Notes:* ${notes}\n`;
+  msg += `\n_Sent from online order form_`;
+
+  return msg;
+}
+
+document.getElementById("sendOrderBtn").onclick = () => {
+  const msg = buildWhatsAppMessage();
+  if (!msg) return;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`);
+};
+</script>
+
 </body>
 </html>
