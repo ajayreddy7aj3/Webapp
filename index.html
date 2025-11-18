@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sambashiva Milk Agency – Online Order</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 16px;
+      background: #f4f5f7;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 14px 22px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      margin: 6px 0 16px;
+    }
+    .field {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #d0d7de;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border 0.15s ease, box-shadow 0.15s ease;
+    }
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px rgba(37,99,235,0.15);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      margin: 14px 0 8px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 4px;
+    }
+
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .product-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 0.9fr) minmax(0, 1fr);
+      gap: 6px;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid #e2e4e8;
+      background: #fafbff;
+    }
+    .product-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .product-unit {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    .product-price {
+      font-size: 0.88rem;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+    .qty-controls button {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: none;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      background: #e5edff;
+      color: #1d4ed8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qty-controls input {
+      width: 44px;
+      text-align: center;
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid #d0d7de;
+      font-size: 0.88rem;
+    }
+
+    .cart-summary {
+      margin-top: 12px;
+      padding: 10px 10px 12px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      font-size: 0.88rem;
+    }
+    .cart-summary-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .cart-items {
+      max-height: 160px;
+      overflow-y: auto;
+      margin-bottom: 6px;
+    }
+    .cart-item-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 2px 0;
+    }
+    .cart-item-name {
+      flex: 1;
+    }
+    .cart-item-qty {
+      white-space: nowrap;
+    }
+    .cart-item-total {
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .cart-total-line {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: #777;
+    }
+
+    .btn-primary {
+      width: 100%;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(22,163,74,0.35);
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow: 0 5px 12px rgba(22,163,74,0.3);
+    }
+
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        padding: 14px 12px 18px;
+      }
+      .product-row {
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.8fr) minmax(0, 1.1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sambashiva Milk Agency</h1>
+    <div class="subtitle">Add items to cart and send your order on WhatsApp – Evening delivery 🚚</div>
+
+    <!-- Customer Info -->
+    <div class="field">
+      <label for="customerName">Name</label>
+      <input id="customerName" type="text" placeholder="Your full name" />
+    </div>
+    <div class="field">
+      <label for="customerAddress">Address / Village</label>
+      <textarea id="customerAddress" placeholder="House no, street, area, village"></textarea>
+    </div>
+    <div class="field">
+      <label for="deliveryTime">Preferred delivery time (evening)</label>
+      <input id="deliveryTime" type="text" placeholder="Example: 6:30 PM – 8:00 PM" />
+    </div>
+
+    <!-- Products -->
+    <h2>Products</h2>
+    <div class="hint" style="margin-bottom:6px;">Tap + / – to change quantity. Prices are per unit (packet / litre).</div>
+    <div class="products" id="productsContainer">
+      <!-- Filled by JavaScript -->
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+      <div class="cart-summary-title">Your Cart</div>
+      <div class="cart-items" id="cartItems">
+        <div class="hint">No items yet. Add from above.</div>
+      </div>
+      <div class="cart-total-line">
+        <span>Total</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+    </div>
+
+    <!-- Extra Notes -->
+    <div class="field" style="margin-top:12px;">
+      <label for="extraNotes">Extra notes (optional)</label>
+      <textarea id="extraNotes" placeholder="Example: More thick curd, call me when you reach, etc."></textarea>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <button class="btn-primary" id="sendOrderBtn">
+      Send Order on WhatsApp
+    </button>
+    <div class="hint" style="text-align:center;margin-top:4px;">
+      WhatsApp will open with order details. Please press “Send” there.
+    </div>
+
+    <div class="footer">
+      Sambashiva Milk Agency • Prop: K. Ajay Kumar Reddy • 7330892694
+    </div>
+  </div>
+
+  <script>
+    // 👉 CHANGE THIS to your WhatsApp number (with country code, no + sign)
+    const WHATSAPP_NUMBER = "917330892694"; // 91 + 7330892694
+
+    // 👉 EDIT THIS LIST: products & prices
+    // price is in rupees per unit (packet / litre – your choice)
+    const PRODUCTS = [
+      { id: "A110", name: "A110 – Arokya Curd 110g", unit: "packet", price: 15 },
+      { id: "A400", name: "A400 – Arokya Curd 400g", unit: "packet", price: 35 },
+      { id: "H500", name: "H500 – Hatsun Curd 500g", unit: "packet", price: 40 },
+      { id: "SM140", name: "S Milk – Arokya 140ml", unit: "packet", price: 7 },
+      { id: "TM500", name: "TM500 – Arokya Toned Milk 500ml", unit: "packet", price: 30 },
+      { id: "SM1L", name: "SM1L – Arokya Standard Milk 1L", unit: "packet", price: 60 },
+      { id: "FCM500", name: "FCM500 – Arokya Full Cream Milk 500ml", unit: "packet", price: 38 },
+      { id: "FCM1L", name: "FCM1L – Arokya Full Cream Milk 1L", unit: "packet", price: 72 }
+    ];
+
+    const quantities = {}; // id -> number
+
+    function formatCurrency(num) {
+      return "₹" + num.toFixed(0);
+    }
+
+    function renderProducts() {
+      const container = document.getElementById("productsContainer");
+      container.innerHTML = "";
+
+      PRODUCTS.forEach(product => {
+        quantities[product.id] = quantities[product.id] || 0;
+
+        const row = document.createElement("div");
+        row.className = "product-row";
+        row.dataset.id = product.id;
+
+        const nameDiv = document.createElement("div");
+        nameDiv.innerHTML = `
+          <div class="product-name">${product.name}</div>
+          <div class="product-unit">${product.unit}</div>
+        `;
+
+        const priceDiv = document.createElement("div");
+        priceDiv.className = "product-price";
+        priceDiv.textContent = formatCurrency(product.price) + " / " + product.unit;
+
+        const controlsDiv = document.createElement("div");
+        controlsDiv.className = "qty-controls";
+
+        const minusBtn = document.createElement("button");
+        minusBtn.textContent = "–";
+        minusBtn.addEventListener("click", () => changeQty(product.id, -1));
+
+        const qtyInput = document.createElement("input");
+        qtyInput.type = "number";
+        qtyInput.min = "0";
+        qtyInput.step = "1";
+        qtyInput.value = quantities[product.id];
+        qtyInput.addEventListener("change", () => {
+          let val = parseInt(qtyInput.value || "0", 10);
+          if (isNaN(val) || val < 0) val = 0;
+          quantities[product.id] = val;
+          qtyInput.value = val;
+          updateCart();
+        });
+
+        const plusBtn = document.createElement("button");
+        plusBtn.textContent = "+";
+        plusBtn.addEventListener("click", () => changeQty(product.id, 1));
+
+        controlsDiv.appendChild(minusBtn);
+        controlsDiv.appendChild(qtyInput);
+        controlsDiv.appendChild(plusBtn);
+
+        row.appendChild(nameDiv);
+        row.appendChild(priceDiv);
+        row.appendChild(controlsDiv);
+
+        container.appendChild(row);
+      });
+    }
+
+    function changeQty(id, delta) {
+      const newVal = Math.max(0, (quantities[id] || 0) + delta);
+      quantities[id] = newVal;
+
+      // update input box in UI
+      const row = document.querySelector(`.product-row[data-id="${id}"]`);
+      if (row) {
+        const input = row.querySelector(".qty-controls input");
+        if (input) input.value = newVal;
+      }
+
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItemsDiv = document.getElementById("cartItems");
+      cartItemsDiv.innerHTML = "";
+
+      let total = 0;
+      let anyItem = false;
+
+      PRODUCTS.forEach(product => {
+        const qty = quantities[product.id] || 0;
+        if (qty > 0) {
+          anyItem = true;
+          const lineTotal = qty * product.price;
+          total += lineTotal;
+
+          const row = document.createElement("div");
+          row.className = "cart-item-row";
+
+          const nameSpan = document.createElement("span");
+          nameSpan.className = "cart-item-name";
+          nameSpan.textContent = product.name;
+
+          const qtySpan = document.createElement("span");
+          qtySpan.className = "cart-item-qty";
+          qtySpan.textContent = qty + " " + product.unit + (qty > 1 ? "s" : "");
+
+          const totalSpan = document.createElement("span");
+          totalSpan.className = "cart-item-total";
+          totalSpan.textContent = formatCurrency(lineTotal);
+
+          row.appendChild(nameSpan);
+          row.appendChild(qtySpan);
+          row.appendChild(totalSpan);
+
+          cartItemsDiv.appendChild(row);
+        }
+      });
+
+      if (!anyItem) {
+        const empty = document.createElement("div");
+        empty.className = "hint";
+        empty.textContent = "No items yet. Add from above.";
+        cartItemsDiv.appendChild(empty);
+      }
+
+      document.getElementById("cartTotal").textContent = formatCurrency(total);
+    }
+
+    function buildWhatsAppMessage() {
+      const name = document.getElementById("customerName").value.trim();
+      const address = document.getElementById("customerAddress").value.trim();
+      const deliveryTime = document.getElementById("deliveryTime").value.trim();
+      const notes = document.getElementById("extraNotes").value.trim();
+
+      if (!name) {
+        alert("Please enter your name.");
+        return null;
+      }
+
+      let lines = [];
+      lines.push("*New Order – Sambashiva Milk Agency*");
+      lines.push("");
+      lines.push("*Name:* " + name);
+      if (address) lines.push("*Address:* " + address);
+      if (deliveryTime) lines.push("*Preferred time:* " + deliveryTime);
+      lines.push("");
+      lines.push("*Items:*");
+
+      let anyItem = false;
+      let total = 0;
+
+      PRODUCTS.forEach(product => {
+        const qty = quantities[product.id] ||
