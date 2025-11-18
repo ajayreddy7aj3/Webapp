@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sambashiva Milk Agency – Online Order</title>
+  <title>Sambashiva Milk Agency – Order Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     * {
@@ -74,10 +74,9 @@
       flex-direction: column;
       gap: 8px;
     }
-
     .product-row {
       display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(0, 0.9fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
       gap: 6px;
       align-items: center;
       padding: 8px 10px;
@@ -92,11 +91,6 @@
     .product-unit {
       font-size: 0.8rem;
       color: #777;
-    }
-    .product-price {
-      font-size: 0.88rem;
-      text-align: right;
-      white-space: nowrap;
     }
 
     .qty-controls {
@@ -156,9 +150,6 @@
     }
     .cart-item-qty {
       white-space: nowrap;
-    }
-    .cart-item-total {
-      white-space: nowrap;
       font-weight: 500;
     }
     .cart-total-line {
@@ -166,7 +157,7 @@
       justify-content: space-between;
       margin-top: 4px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     .hint {
@@ -205,7 +196,7 @@
         padding: 14px 12px 18px;
       }
       .product-row {
-        grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.8fr) minmax(0, 1.1fr);
+        grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.1fr);
       }
     }
   </style>
@@ -213,7 +204,7 @@
 <body>
   <div class="container">
     <h1>Sambashiva Milk Agency</h1>
-    <div class="subtitle">Add items to cart and send your order on WhatsApp – Evening delivery 🚚</div>
+    <div class="subtitle">Add items and send your order on WhatsApp – Evening delivery 🚚</div>
 
     <!-- Customer Info -->
     <div class="field">
@@ -231,9 +222,151 @@
 
     <!-- Products -->
     <h2>Products</h2>
-    <div class="hint" style="margin-bottom:6px;">Tap + / – to change quantity. Prices are per unit (packet / litre).</div>
+    <div class="hint" style="margin-bottom:6px;">Tap + / – to change quantity.</div>
+
     <div class="products" id="productsContainer">
-      <!-- Filled by JavaScript -->
+      <!-- 1. Toned Milk 500ml -->
+      <div class="product-row" data-id="TONED500">
+        <div>
+          <div class="product-name">Toned Milk 500ml</div>
+          <div class="product-unit">packet</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 2. Standardized Milk 500ml -->
+      <div class="product-row" data-id="STD500">
+        <div>
+          <div class="product-name">Standardized Milk 500ml</div>
+          <div class="product-unit">packet</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 3. Full cream Milk 500ml -->
+      <div class="product-row" data-id="FULL500">
+        <div>
+          <div class="product-name">Full Cream Milk 500ml</div>
+          <div class="product-unit">packet</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 4. Small Milk 110ml -->
+      <div class="product-row" data-id="SMALL110">
+        <div>
+          <div class="product-name">Small Milk 110ml</div>
+          <div class="product-unit">packet</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 5. Small curd 110 (Arokya) -->
+      <div class="product-row" data-id="SCURD110_AROKYA">
+        <div>
+          <div class="product-name">Small Curd 110g (Arokya)</div>
+          <div class="product-unit">cup</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 6. Small curd (Hatsun) -->
+      <div class="product-row" data-id="SCURD110_HATSUN">
+        <div>
+          <div class="product-name">Small Curd 110g (Hatsun)</div>
+          <div class="product-unit">cup</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 7. Arokya Curd 400g -->
+      <div class="product-row" data-id="ACURD400">
+        <div>
+          <div class="product-name">Arokya Curd 400g</div>
+          <div class="product-unit">cup</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 8. Hatsun Curd 500g -->
+      <div class="product-row" data-id="HCURD500">
+        <div>
+          <div class="product-name">Hatsun Curd 500g</div>
+          <div class="product-unit">cup</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 9. Full Cream Milk 1000ml -->
+      <div class="product-row" data-id="FULL1000">
+        <div>
+          <div class="product-name">Full Cream Milk 1000ml</div>
+          <div class="product-unit">packet</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 10. Standardized Milk 1000ml -->
+      <div class="product-row" data-id="STD1000">
+        <div>
+          <div class="product-name">Standardized Milk 1000ml</div>
+          <div class="product-unit">packet</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
+
+      <!-- 11. Paneer -->
+      <div class="product-row" data-id="PANEER">
+        <div>
+          <div class="product-name">Paneer</div>
+          <div class="product-unit">pack</div>
+        </div>
+        <div class="qty-controls">
+          <button type="button" class="btn-minus">–</button>
+          <input type="number" min="0" step="1" value="0" class="qty-input" />
+          <button type="button" class="btn-plus">+</button>
+        </div>
+      </div>
     </div>
 
     <!-- Cart Summary -->
@@ -243,8 +376,8 @@
         <div class="hint">No items yet. Add from above.</div>
       </div>
       <div class="cart-total-line">
-        <span>Total</span>
-        <span id="cartTotal">₹0</span>
+        <span>Total items</span>
+        <span id="cartTotalItems">0</span>
       </div>
     </div>
 
@@ -268,132 +401,76 @@
   </div>
 
   <script>
-    // 👉 CHANGE THIS to your WhatsApp number (with country code, no + sign)
-    const WHATSAPP_NUMBER = "917330892694"; // 91 + 7330892694
+    // Your WhatsApp number (with country code, no + sign)
+    const WHATSAPP_NUMBER = "917330892694";
 
-    // 👉 EDIT THIS LIST: products & prices
-    // price is in rupees per unit (packet / litre – your choice)
-    const PRODUCTS = [
-      { id: "A110", name: "A110 – Arokya Curd 110g", unit: "packet", price: 15 },
-      { id: "A400", name: "A400 – Arokya Curd 400g", unit: "packet", price: 35 },
-      { id: "H500", name: "H500 – Hatsun Curd 500g", unit: "packet", price: 40 },
-      { id: "SM140", name: "S Milk – Arokya 140ml", unit: "packet", price: 7 },
-      { id: "TM500", name: "TM500 – Arokya Toned Milk 500ml", unit: "packet", price: 30 },
-      { id: "SM1L", name: "SM1L – Arokya Standard Milk 1L", unit: "packet", price: 60 },
-      { id: "FCM500", name: "FCM500 – Arokya Full Cream Milk 500ml", unit: "packet", price: 38 },
-      { id: "FCM1L", name: "FCM1L – Arokya Full Cream Milk 1L", unit: "packet", price: 72 }
-    ];
+    // Read all product rows and keep data in JS
+    const productRows = document.querySelectorAll(".product-row");
+    const products = []; // {id, name, unit, qty}
 
-    const quantities = {}; // id -> number
+    productRows.forEach(function (row) {
+      const id = row.getAttribute("data-id");
+      const name = row.querySelector(".product-name").textContent.trim();
+      const unit = row.querySelector(".product-unit").textContent.trim();
+      const input = row.querySelector(".qty-input");
+      const minusBtn = row.querySelector(".btn-minus");
+      const plusBtn = row.querySelector(".btn-plus");
 
-    function formatCurrency(num) {
-      return "₹" + num.toFixed(0);
-    }
+      const product = { id, name, unit, qty: 0, input };
+      products.push(product);
 
-    function renderProducts() {
-      const container = document.getElementById("productsContainer");
-      container.innerHTML = "";
-
-      PRODUCTS.forEach(product => {
-        quantities[product.id] = quantities[product.id] || 0;
-
-        const row = document.createElement("div");
-        row.className = "product-row";
-        row.dataset.id = product.id;
-
-        const nameDiv = document.createElement("div");
-        nameDiv.innerHTML = `
-          <div class="product-name">${product.name}</div>
-          <div class="product-unit">${product.unit}</div>
-        `;
-
-        const priceDiv = document.createElement("div");
-        priceDiv.className = "product-price";
-        priceDiv.textContent = formatCurrency(product.price) + " / " + product.unit;
-
-        const controlsDiv = document.createElement("div");
-        controlsDiv.className = "qty-controls";
-
-        const minusBtn = document.createElement("button");
-        minusBtn.textContent = "–";
-        minusBtn.addEventListener("click", () => changeQty(product.id, -1));
-
-        const qtyInput = document.createElement("input");
-        qtyInput.type = "number";
-        qtyInput.min = "0";
-        qtyInput.step = "1";
-        qtyInput.value = quantities[product.id];
-        qtyInput.addEventListener("change", () => {
-          let val = parseInt(qtyInput.value || "0", 10);
-          if (isNaN(val) || val < 0) val = 0;
-          quantities[product.id] = val;
-          qtyInput.value = val;
-          updateCart();
-        });
-
-        const plusBtn = document.createElement("button");
-        plusBtn.textContent = "+";
-        plusBtn.addEventListener("click", () => changeQty(product.id, 1));
-
-        controlsDiv.appendChild(minusBtn);
-        controlsDiv.appendChild(qtyInput);
-        controlsDiv.appendChild(plusBtn);
-
-        row.appendChild(nameDiv);
-        row.appendChild(priceDiv);
-        row.appendChild(controlsDiv);
-
-        container.appendChild(row);
+      minusBtn.addEventListener("click", function () {
+        let val = parseInt(product.input.value || "0", 10);
+        if (isNaN(val)) val = 0;
+        val = Math.max(0, val - 1);
+        product.qty = val;
+        product.input.value = val;
+        updateCart();
       });
-    }
 
-    function changeQty(id, delta) {
-      const newVal = Math.max(0, (quantities[id] || 0) + delta);
-      quantities[id] = newVal;
+      plusBtn.addEventListener("click", function () {
+        let val = parseInt(product.input.value || "0", 10);
+        if (isNaN(val)) val = 0;
+        val = val + 1;
+        product.qty = val;
+        product.input.value = val;
+        updateCart();
+      });
 
-      // update input box in UI
-      const row = document.querySelector(`.product-row[data-id="${id}"]`);
-      if (row) {
-        const input = row.querySelector(".qty-controls input");
-        if (input) input.value = newVal;
-      }
-
-      updateCart();
-    }
+      input.addEventListener("change", function () {
+        let val = parseInt(product.input.value || "0", 10);
+        if (isNaN(val) || val < 0) val = 0;
+        product.qty = val;
+        product.input.value = val;
+        updateCart();
+      });
+    });
 
     function updateCart() {
       const cartItemsDiv = document.getElementById("cartItems");
       cartItemsDiv.innerHTML = "";
 
-      let total = 0;
+      let totalItems = 0;
       let anyItem = false;
 
-      PRODUCTS.forEach(product => {
-        const qty = quantities[product.id] || 0;
-        if (qty > 0) {
+      products.forEach(function (p) {
+        if (p.qty > 0) {
           anyItem = true;
-          const lineTotal = qty * product.price;
-          total += lineTotal;
+          totalItems += p.qty;
 
           const row = document.createElement("div");
           row.className = "cart-item-row";
 
           const nameSpan = document.createElement("span");
           nameSpan.className = "cart-item-name";
-          nameSpan.textContent = product.name;
+          nameSpan.textContent = p.name;
 
           const qtySpan = document.createElement("span");
           qtySpan.className = "cart-item-qty";
-          qtySpan.textContent = qty + " " + product.unit + (qty > 1 ? "s" : "");
-
-          const totalSpan = document.createElement("span");
-          totalSpan.className = "cart-item-total";
-          totalSpan.textContent = formatCurrency(lineTotal);
+          qtySpan.textContent = p.qty + " " + p.unit + (p.qty > 1 ? "s" : "");
 
           row.appendChild(nameSpan);
           row.appendChild(qtySpan);
-          row.appendChild(totalSpan);
-
           cartItemsDiv.appendChild(row);
         }
       });
@@ -405,7 +482,7 @@
         cartItemsDiv.appendChild(empty);
       }
 
-      document.getElementById("cartTotal").textContent = formatCurrency(total);
+      document.getElementById("cartTotalItems").textContent = totalItems;
     }
 
     function buildWhatsAppMessage() {
@@ -429,7 +506,46 @@
       lines.push("*Items:*");
 
       let anyItem = false;
-      let total = 0;
+      let totalItems = 0;
 
-      PRODUCTS.forEach(product => {
-        const qty = quantities[product.id] ||
+      products.forEach(function (p) {
+        if (p.qty > 0) {
+          anyItem = true;
+          totalItems += p.qty;
+          lines.push("- " + p.name + " – " + p.qty + " " + p.unit + (p.qty > 1 ? "s" : ""));
+        }
+      });
+
+      if (!anyItem) {
+        alert("Please add at least one item.");
+        return null;
+      }
+
+      lines.push("");
+      lines.push("*Total items:* " + totalItems);
+
+      if (notes) {
+        lines.push("");
+        lines.push("*Notes:* " + notes);
+      }
+
+      lines.push("");
+      lines.push("_Sent from online order form_");
+
+      return lines.join("\n");
+    }
+
+    document.getElementById("sendOrderBtn").addEventListener("click", function () {
+      const msg = buildWhatsAppMessage();
+      if (!msg) return;
+
+      const encoded = encodeURIComponent(msg);
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encoded;
+      window.open(url, "_blank");
+    });
+
+    // Initial cart state
+    updateCart();
+  </script>
+</body>
+</html>
